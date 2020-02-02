@@ -1,0 +1,7 @@
+dependencies:
+- host: github.com
+  owner: cb-kubecd
+  repo: jr-9
+  url: https://github.com/cb-kubecd/jr-9.git
+  version: ""
+  versionURL: ""
