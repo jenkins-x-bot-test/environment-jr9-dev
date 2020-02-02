@@ -1,21 +1,96 @@
+autoUpdate:
+  enabled: false
+  schedule: ""
 bootConfigURL: https://github.com/jenkins-x/jenkins-x-boot-helmfile-config
 cluster:
+  azure: {}
+  clusterName: jr9
+  environmentGitOwner: cb-kubecd
+  environmentGitPublic: true
+  externalDNSSAName: externaldns-sa
   gitKind: github
   gitName: github
+  gitPublic: true
   gitServer: https://github.com
+  gke:
+    projectNumber: "970368980334"
+  kanikoSAName: kaniko-sa
   namespace: jx
+  project: jx-development
   provider: gke
+  vaultName: jr9
+  vaultSAName: vault-sa
+  zone: europe-west1-b
 environments:
-- key: dev
-- key: staging
-  remoteCluster: false
-- key: production
-  remoteCluster: false
+- ingress:
+    domain: 35.195.59.224.nip.io
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+  repository: environment-jr9-dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+  repository: environment-jr9-staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+  repository: environment-jr9-production
+githubApp:
+  enabled: false
 gitops: true
 helmfile: true
+ingress:
+  domain: 35.195.59.224.nip.io
+  externalDNS: false
+  namespaceSubDomain: -jx.
+  tls:
+    email: ""
+    enabled: false
+    production: false
 kaniko: true
 repository: nexus
 secretStorage: local
+storage:
+  backup:
+    enabled: false
+    url: ""
+  logs:
+    enabled: false
+    url: ""
+  reports:
+    enabled: false
+    url: ""
+  repository:
+    enabled: false
+    url: ""
+vault:
+  aws: {}
+  bucket: jr9-vault
+  key: jr9-crypto-key
+  keyring: jr9-keyring
+  name: jr9
+  serviceAccount: vault-sa
+velero:
+  schedule: ""
+  serviceAccount: velero-sa
+  ttl: ""
 versionStream:
   ref: v1.0.330
   url: https://github.com/jenkins-x/jenkins-x-versions.git
